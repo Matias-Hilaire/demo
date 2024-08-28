@@ -9,9 +9,8 @@ export default function Home() {
     <div>
       <main>
         <div className="w-full h-screen bg-slate-500">
-          <div className="bg-white ">
-            <ThreeBarMenu/>
-            </div>
+          <ThreeBarMenu/>
+            <div className="w-auto h-auto flex justify-center items-center absolute top-0 left-1/2 transform -translate-x-1/2">
               <div className="w-28 h-auto">
                 <Image
                   className='place-content-center'
@@ -21,6 +20,7 @@ export default function Home() {
                   width={700}
                   height={500}
                 />
+            </div>
           </div>
         </div>
       </main>
