@@ -2,7 +2,7 @@
 "use client";
 import React from 'react';
 import Image from 'next/image';
-import ThreeBarMenu from './threeBarMenu';
+import ThreeBarMenu from '../threeBarMenu';
 
 export default function Home() {
   return (
