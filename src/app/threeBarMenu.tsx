@@ -16,7 +16,7 @@ export default function ThreeBarMenu() {
       >
         <div className="w-6 h-1 bg-my-blue mb-1 rounded"></div>
         <div className="w-6 h-1 bg-my-blue mb-1 rounded"></div>
-        <div className="w-6 h-1 bg-my-blue rounded"></div>
+        <div className="w-6 h-1 bg-my-blue mb-1 rounded"></div>
       </button>
 
       <nav 
@@ -26,7 +26,7 @@ export default function ThreeBarMenu() {
         
         {/* Botón para cerrar el menú */}
         <button onClick={() => setIsOpen(false)}
-        className="text-white transition-transform duration-300 mb-4">Cerrar</button>               
+        className="text-white transition-transform duration-300 mb-5">Cerrar</button>               
 
         <a href="./inicio" className="py-2 px-4">Inicio</a>
         <a href="#" className="py-2 px-4">Propiedades</a>

@@ -6,7 +6,7 @@ import ThreeBarMenu from '../threeBarMenu';
 export default function Contact() {
   return (
     <div className="min-h-screen bg-slate-500 flex flex-col items-center justify-start py-10 px-4">
-        <div><ThreeBarMenu/></div>
+        <div className='absolute left-0 top-0'><ThreeBarMenu/></div>
       <h1 className="text-4xl font-bold mb-6">Contáctanos</h1>
 
       {/*Información de contacto*/}
@@ -36,24 +36,21 @@ export default function Contact() {
         <form className="flex flex-col space-y-4">
           {/*para el mensaje*/}
           <textarea
-            className="border border-my-blue p-2 rounded-md resize-none h-32"
+            className="border border-my-blue p-2 rounded-md resize-none h-32 text-black"
             placeholder="Escribe tu mensaje aquí..."
-            required
-          ></textarea>
+            required></textarea>
 
           {/*para el mail*/}
           <input
             type="email"
-            className="border border-my-blue p-2 rounded-md"
+            className="border border-my-blue p-2 rounded-md text-black"
             placeholder="Tu correo electrónico"
-            required
-          />
+            required/>
 
           {/*para enviar*/}
           <button
             type="submit"
-            className="bg-my-blue text-white py-2 px-4 rounded-md hover:bg-blue-600"
-          >
+            className="bg-my-blue text-white py-2 px-4 rounded-md hover:bg-blue-900">
             Enviar
           </button>
         </form>
