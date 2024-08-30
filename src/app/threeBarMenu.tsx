@@ -29,7 +29,7 @@ export default function ThreeBarMenu() {
         className="text-white transition-transform duration-300 mb-5">Cerrar</button>               
 
         <a href="./inicio" className="py-2 px-4">Inicio</a>
-        <a href="#" className="py-2 px-4">Propiedades</a>
+        <a href="./propiedades" className="py-2 px-4">Propiedades</a>
         <a href="./contactanos" className="py-2 px-4">Contacto</a>
       </nav>
     </div>

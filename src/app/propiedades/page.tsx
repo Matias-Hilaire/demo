@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import ThreeBarMenu from '../threeBarMenu';
 
-export default function Inicio() {
+export default function Propiedades() {
   return (
     <div>
       <main>
