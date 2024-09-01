@@ -5,7 +5,7 @@ import ThreeBarMenu from '../threeBarMenu';
 
 export default function Inicio() {
   return (
-    <div>
+    <div className="bg-white">
       <ThreeBarMenu/>
       <main className={`w-full h-screen bg-white`}>
         <div className="w-40 h-auto flex justify-center items-center absolute top-0 left-1/2 transform -translate-x-1/2">

@@ -5,8 +5,17 @@ import ThreeBarMenu from '../threeBarMenu';
 
 export default function Contact() {
   return (
-    <div className="min-h-screen bg-slate-500 flex flex-col items-center justify-start py-10 px-4">
-        <div className='absolute left-0 top-0'><ThreeBarMenu/></div>
+    <div className="min-h-screen bg-white flex flex-col items-center justify-start py-10 px-4">
+      <div className='absolute left-0 top-0'><ThreeBarMenu/></div>
+        <div className="w-40 h-auto flex justify-center items-center absolute top-0">
+          <Image
+            className='place-content-center'
+            src="/SerPatagonia.jpg"
+            alt="Ser de la Patagonia"
+            layout="responsive"
+            width={700}
+            height={500}/> 
+          </div>
       <h1 className="text-4xl font-bold mb-6">Contáctanos</h1>
 
       {/*Información de contacto*/}

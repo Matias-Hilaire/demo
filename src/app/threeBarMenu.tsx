@@ -32,9 +32,9 @@ export default function ThreeBarMenu() {
           Cerrar
         </button>
 
-        <a href="./inicio" className="py-2 px-4">Inicio</a>
-        <a href="./propiedades" className="py-2 px-4">Propiedades</a>
-        <a href="./contactanos" className="py-2 px-4">Contacto</a>
+        <a href="../inicio" className="py-2 px-4">Inicio</a>
+        <a href="../propiedades" className="py-2 px-4">Propiedades</a>
+        <a href="../contactanos" className="py-2 px-4">Contacto</a>
       </nav>
     </div>
   );
