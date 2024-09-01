@@ -20,6 +20,15 @@ export default function Propiedades() {
                   height={500}
                 />
           </div>
+          <div className="w-40 h-auto flex justify-center items-center">
+            <Image 
+              className='place content-center'
+              src="/casa2.jpg"
+              alt='casa'
+              layout='responsive'
+              width={70}
+              height={50}/>
+          </div>
         </div>
       </main>
     </div>
