@@ -9,7 +9,7 @@ export default function ThreeBarMenu() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative z-50">
       <button 
         onClick={toggleMenu} 
         className="p-4 text-my-blue rounded-br"
