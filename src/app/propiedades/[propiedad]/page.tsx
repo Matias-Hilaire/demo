@@ -13,8 +13,8 @@ export default function Propiedad({ params }: { params: { Propiedad: string } })
       <h1>{params.Propiedad}</h1>
       <main>
         <div className="w-full h-screen bg-white">
-          <ThreeBarMenu/>
-            <div className="w-40 h-auto flex justify-center items-center absolute top-0 left-1/2 transform -translate-x-1/2">
+        <div className='absolute left-0 top-0'><ThreeBarMenu/></div>
+        <div className="w-40 h-auto flex justify-center items-center absolute top-0 left-1/2 transform -translate-x-1/2">
               <Image
                 className='place-content-center'
                 src="/SerPatagonia.jpg"
@@ -26,6 +26,6 @@ export default function Propiedad({ params }: { params: { Propiedad: string } })
             </div>
         </div>
     </main>
-</div>
+  </div>
   );
 }
