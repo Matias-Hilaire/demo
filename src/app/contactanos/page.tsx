@@ -1,25 +1,27 @@
 "use client";
 import React from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import ThreeBarMenu from '../threeBarMenu';
 
 export default function Contact() {
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-start py-10 px-4">
+    <div className="min-h-screen bg-white flex flex-col items-center justify-start py-10 px-4 relative">
       <div className='absolute left-0 top-0'><ThreeBarMenu/></div>
         <div className="w-40 h-auto flex justify-center items-center absolute top-0">
-          <Image
-            className='place-content-center'
-            src="/SerPatagonia.jpg"
-            alt="Ser de la Patagonia"
-            layout="responsive"
-            width={700}
-            height={500}/> 
-          </div>
-
-      <h1 className="text-4xl font-bold mb-6 bg-black">Contáctanos</h1>
-      {/*Información de contacto*/}
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 w-full max-w-md">
+          <Link href="/inicio">
+            <Image
+              className='place-content-center'
+              src="/SerPatagonia.jpg"
+              alt="Ser de la Patagonia"
+              layout="responsive"
+              width={700}
+              height={500}/> 
+          </Link>
+        </div>
+    
+    {/*Información de contacto*/}                                                                             
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 w-full max-w-md translate-y-24">
         <h2 className="text-2xl font-semibold mb-4 text-black">Información de Contacto</h2>
         <p className="mb-2">
           <strong className="text-black">Email: contacto@ejemplo.com</strong> 
