@@ -22,7 +22,7 @@ export default function Propiedades() {
                   height={500}/> 
               </Link>
             </div>
-          <div className="w-80 h-auto translate-y-40">
+          <div className="w-80 flex justify-center space-x-8 translate-y-40">
           <Link href="/propiedades/casa2">
             <Image 
               className='place content-center'
@@ -32,6 +32,7 @@ export default function Propiedades() {
               width={70}
               height={50}/>
             </Link>
+            <Link href="/casa3">
             <Image 
               className='place content-center'
               src="/casa3.jpg"
@@ -39,6 +40,7 @@ export default function Propiedades() {
               layout='responsive'
               width={70}
               height={50}/>
+            </Link>
           </div>
         </div>
       </main>

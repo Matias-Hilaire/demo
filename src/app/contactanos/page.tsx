@@ -42,7 +42,7 @@ export default function Contact() {
       </div>
 
       {/*Formulario de contacto*/}
-      <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
+      <div className="bg-white p-6 mb rounded-lg shadow-md w-full max-w-md translate-y-20">
         <h2 className="text-2xl font-semibold mb-4 text-black">mandanos un mensaje</h2>
         <form className="flex flex-col space-y-4">
           {/*para el mensaje*/}
