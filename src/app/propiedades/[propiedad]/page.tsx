@@ -7,12 +7,11 @@ import { useRouter } from 'next/navigation';
 import ThreeBarMenu from '@/app/threeBarMenu';
 
 export default function Propiedad({ params }: { params: { Propiedad: string } }) {
-
-const nroProp = "/"+{params:Propiedad};
+  const nroProp = `/${params.Propiedad}.jpg`;
 
   return (
     <div>
-      <h1></h1>
+      <h1>{nroProp}</h1>
       <main>
         <div className="w-full h-screen bg-white">
         <div className='absolute left-0 top-0'><ThreeBarMenu/></div>
@@ -28,12 +27,13 @@ const nroProp = "/"+{params:Propiedad};
             </Link>
           </div>
         <div className='w-full h-screen flex justify-center items-center'>
-          <Image 
+          <Image
             className='place-content-center'
-            src={nroProp}
-            alt=''
+            src={nroProp} 
+            alt={`Imagen de ${params.Propiedad}`}
             width={70}
-            height={50}/>
+            height={50}
+          />
         </div>
       </div>
     </main>

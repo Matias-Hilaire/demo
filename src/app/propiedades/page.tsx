@@ -32,7 +32,7 @@ export default function Propiedades() {
               width={70}
               height={50}/>
             </Link>
-            <Link href="/casa3">
+          <Link href="/propiedades/casa3">
             <Image 
               className='place content-center'
               src="/casa3.jpg"
@@ -40,7 +40,7 @@ export default function Propiedades() {
               layout='responsive'
               width={70}
               height={50}/>
-            </Link>
+          </Link>
           </div>
         </div>
       </main>
