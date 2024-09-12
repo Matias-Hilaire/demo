@@ -2,6 +2,7 @@
 
 import { Loader } from "@googlemaps/js-api-loader";
 import React, { useEffect } from "react";
+import ThreeBarMenu from "../threeBarMenu";
 
 export default function Mapa() {
   const mapRef = React.useRef<HTMLDivElement>(null);
@@ -34,5 +35,11 @@ export default function Mapa() {
     initMap();
   }, []);
 
-  return <div className="h-[500px] w-[100%]" ref={mapRef}></div>;
+  return (
+    <div className="w-full h-screen bg-white flex flex-col justify-center items-center">      
+      <div className="absolute left-0 top-0"><ThreeBarMenu/></div>
+      <div className="w-[95%] h-[90%]" ref={mapRef}>
+      </div>
+    </div>
+  )
 }

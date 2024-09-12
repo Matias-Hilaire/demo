@@ -24,7 +24,7 @@ export default function ThreeBarMenu() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative z-50">
       <button 
         onClick={toggleMenu} 
         className="p-4 text-my-blue rounded-br"
@@ -50,7 +50,8 @@ export default function ThreeBarMenu() {
           </button>
 
           <a href="../" className="py-2 px-4">Inicio</a>
-          <a href="../propiedades" className="py-2 px-4">propiedades</a>
+          <a href="../propiedades" className="py-2 px-4">Propiedades</a>
+          <a href="../mapa" className="py-2 px-4">Mapa</a>
           <a href="../contactanos" className="py-2 px-4">Contacto</a>
         </nav>
       )}
