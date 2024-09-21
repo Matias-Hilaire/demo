@@ -13,7 +13,7 @@ export default function Propiedad({ params }: { params: { Propiedad: string } })
   return (
     <div className="w-full h-screen bg-white flex flex-col justify-center items-center">
       <div className='absolute left-0 top-0'><ThreeBarMenu/></div>
-      <div className="w-40 h-auto flex justify-center items-center absolute top-0 left-1/2 transform -translate-x-1/2">
+      <div className="w-40 h-auto flex justify-center items-center absolute top-0">
         <Link href="/inicio">
           <Image
             className='place-content-center'
@@ -34,9 +34,9 @@ export default function Propiedad({ params }: { params: { Propiedad: string } })
           height={50}
         />
       </div>
-      <div className='bg-white w-[50%] h-[65%] flex justify-center items-center mb-10'>
+      <div className='w-[50%] h-[35%] flex items-center m-10 rounded-md '>
         <Mapa/>
       </div>
-    </div>
+    </div>  
   )
 }
