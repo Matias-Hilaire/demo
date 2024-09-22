@@ -11,7 +11,7 @@ export default function Propiedades() {
       <main>
         <div className="w-full h-screen bg-white flex justify-center items-center">
           <div className='absolute left-0 top-0'><ThreeBarMenu/></div>
-        <div className="w-40 h-auto flex justify-center items-center absolute top-0 left-1/2 transform -translate-x-1/2">
+        <div className="w-40 h-auto flex justify-center items-center absolute top-0">
           <Link href="/inicio">
             <Image
               className='place-content-center'
@@ -22,7 +22,7 @@ export default function Propiedades() {
               height={500}/> 
           </Link>
         </div>
-      <div className="w-80 flex justify-center items-center space-x-8 translate-y-40">
+      <div className="w-80 flex justify-center items-center space-x-8">
       <Link href="/propiedades/casa2">
         <Image 
           className='place content-center'

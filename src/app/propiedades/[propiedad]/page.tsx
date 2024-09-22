@@ -25,7 +25,7 @@ export default function Propiedad({ params }: { params: { Propiedad: string } })
           /> 
         </Link>
       </div>
-      <div className='w-full h-full flex justify-center items-center'>
+      <div className='text-black w-full h-full flex justify-center items-center'>
         <Image
           className='place-content-center'
           src={nroProp} 

@@ -38,7 +38,7 @@ export default function Mapa() {
   return (
     <div className="w-full h-screen bg-white flex flex-col justify-center items-center">      
       <div className="absolute left-0 top-0"><ThreeBarMenu/></div>
-      <div className="w-[95%] h-[90%] rounded-md shadow-md" ref={mapRef}>
+      <div className="w-[90%] h-[85%] rounded-md shadow-2xl" ref={mapRef}>
       </div>
     </div>
   )
