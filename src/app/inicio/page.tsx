@@ -21,26 +21,27 @@ export default function Inicio() {
           </Link>
         </div>
         <div className=''>
-          <h1 className='text-black flex justify-center m-11'>Propiedades mas vistas</h1>
-
-          <Link href="/propiedades/casa2">
-          <Image 
-            className='place content-center'
-            src="/casa2.jpg"
-            alt='casa'
-            layout='responsive'
-            width={70}
-            height={50}/>
-          </Link>
-          <Link href="/propiedades/casa3">
-          <Image 
-            className='place content-center'
-            src="/casa3.jpg"
-            alt='casa'
-            layout='responsive'
-            width={70}
-            height={50}/>
-          </Link>
+          <h1 className='text-black flex justify-center m-11 font-bold'>PROPIEDADES MAS VISTAS</h1>
+          <div className=''>
+            <Link href="/propiedades/casa2">
+            <Image 
+              className='place content-center'
+              src="/casa2.jpg"
+              alt='casa'
+              layout='responsive'
+              width={70}
+              height={50}/>
+            </Link>
+            <Link href="/propiedades/casa3">
+            <Image 
+              className='place content-center'
+              src="/casa3.jpg"
+              alt='casa'
+              layout='responsive'
+              width={70}
+              height={50}/>
+            </Link>
+          </div>
         </div>
       </main>
     </div>

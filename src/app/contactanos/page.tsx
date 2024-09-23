@@ -21,7 +21,7 @@ export default function Contact() {
         </div>
     
     {/*Información de contacto*/}                                                                             
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 w-full max-w-md translate-y-24">
+      <div className="bg-white p-6 rounded-lg shadow-2xl mb-8 w-full max-w-md translate-y-24">
         <h2 className="text-2xl font-semibold mb-4 text-black">Información de Contacto</h2>
         <p className="mb-2">
           <strong className="text-black">Email: contacto@ejemplo.com</strong> 
@@ -42,7 +42,7 @@ export default function Contact() {
       </div>
 
       {/*Formulario de contacto*/}
-      <div className="bg-white p-6 mb rounded-lg shadow-md w-full max-w-md translate-y-20">
+      <div className="bg-white p-6 mb rounded-lg shadow-2xl w-full max-w-md translate-y-20">
         <h2 className="text-2xl font-semibold mb-4 text-black">mandanos un mensaje</h2>
         <form className="flex flex-col space-y-4">
           {/*para el mensaje*/}
