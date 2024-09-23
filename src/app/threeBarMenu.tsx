@@ -30,7 +30,7 @@ export default function ThreeBarMenu() {
       </button>
 
       <nav 
-        className={`menu-bar fixed top-0 w-64 h-full bg-my-blue text-white
+        className={`menu-bar fixed top-0 w-64 h-full bg-my-blue text-white shadow-2xl
                     flex flex-col items-center pt-10 transition-transform duration-300 
                     ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
 
