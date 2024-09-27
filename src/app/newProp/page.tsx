@@ -15,7 +15,6 @@ export default function PropertyForm() {
     typeId: '',
   });
 
-  // Tipado correcto para el evento de cambio
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -24,11 +23,9 @@ export default function PropertyForm() {
     });
   };
 
-  // Tipado correcto para el evento de envío
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Aquí puedes realizar la lógica para enviar los datos a la base de datos
     const response = await fetch('/api/properties', {
       method: 'POST',
       headers: {
@@ -39,7 +36,7 @@ export default function PropertyForm() {
 
     if (response.ok) {
       alert('Propiedad cargada exitosamente');
-      // Resetear el formulario
+      // Resetea el formulario
       setFormData({
         address: '',
         price: '',
@@ -55,19 +52,8 @@ export default function PropertyForm() {
 
   return (
     <div className='w-full h-screen bg-white flex flex-col justify-center items-center'>
-        <div className='absolute left-0 top-0'><ThreeBarMenu/></div>
-            <div className="w-40 h-auto flex justify-center absolute top-0">
-            <Link href="/inicio">
-            <Image
-                className='place-content-center'
-                src="/SerPatagonia.jpg"
-                alt="Ser de la Patagonia"
-                layout="responsive"
-                width={700}
-                height={500}/> 
-            </Link>
-        </div>
-    <div className="w-[40%] p-6 bg-slate-100 justify-center items-center rounded-lg shadow-2xl">
+      <div className='absolute left-0 top-0'><ThreeBarMenu/></div>
+    <div className="w-[35%] h-[90%] p-6 bg-slate-100 justify-center items-center rounded-lg shadow-2xl">
       <h2 className="text-2xl font-semibold text-black mb-6">Cargar Nueva Propiedad</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -142,7 +128,6 @@ export default function PropertyForm() {
             <option value="1">Casa</option>
             <option value="2">Departamento</option>
             <option value="3">Terreno</option>
-            {/* Agregar más opciones según los tipos de propiedad que tengas en tu base de datos */}
           </select>
         </div>
 
