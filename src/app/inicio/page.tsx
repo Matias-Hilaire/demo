@@ -26,8 +26,8 @@ export default function Inicio() {
           </Link>
         </div>
 
-        <div className="w-[60%] p-10 rounded-lg shadow-2xl flex flex-col items-center">
-          <h1 className="text-black text-center font-bold text-2xl mb-8">
+        <div className=" over w-[60%] p-10 rounded-lg shadow-2xl flex flex-col items-center">
+          <h1 className="relative text-black text-center font-bold text-2xl mb-8">
             PROPIEDADES MÁS VISTAS
           </h1>
 

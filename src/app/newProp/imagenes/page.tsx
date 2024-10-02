@@ -1,0 +1,1 @@
+//agrega imagenes a una prop

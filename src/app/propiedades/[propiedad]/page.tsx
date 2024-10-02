@@ -34,7 +34,7 @@ export default function Propiedad({ params }: { params: { Propiedad: string } })
           height={50}
         />
       </div>
-      <div className='w-[50%] h-[35%] flex items-center m-10 rounded-md '>
+      <div className='w-[50%] h-[100%] shadow-md flex items-center m-10 rounded-md overflow-hidden'>
         <Mapa/>
       </div>
     </div>  

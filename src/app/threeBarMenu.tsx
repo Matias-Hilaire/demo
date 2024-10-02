@@ -46,6 +46,7 @@ export default function ThreeBarMenu() {
         <a href="../propiedades" className="py-2 px-4">Propiedades</a>
         <a href="../mapa" className="py-2 px-4">Mapa</a>
         <a href="../contactanos" className="py-2 px-4">Contacto</a>
+        <a href="../newProp" className='py-2 px-4'>agregar propiedades</a>
       </nav>
     </div>
   );
