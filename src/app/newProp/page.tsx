@@ -167,7 +167,7 @@ export default function PropertyForm() {
         </form>
         </div>        
       <div className='w-[35px]'>
-        <Link href="src\app\newProp\imagenes">
+        <Link href="\newProp\imagenes">
           <button className="hover:bg-slate-300 rounded-full">
               <Image
                 className=""

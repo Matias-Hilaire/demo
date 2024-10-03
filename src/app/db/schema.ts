@@ -1,5 +1,5 @@
 import { sql } from 'drizzle-orm';
-import { integer, sqliteTable, text, real } from 'drizzle-orm/sqlite-core';
+import { integer, sqliteTable, text, real,  } from 'drizzle-orm/sqlite-core';
 
 // Tabla para las propiedades
 export const propertiesTable = sqliteTable('properties', {
