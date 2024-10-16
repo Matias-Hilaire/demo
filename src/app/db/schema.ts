@@ -15,18 +15,18 @@ export const propertiesTable = sqliteTable('properties', {
     .notNull(),
 });
 
-// Tabla para las imágenes de las propiedades (chatgpt)
-export const imagesTable = sqliteTable('images', {
-  id: integer('id').primaryKey(),
-  propertyId: integer('property_id')
-    .notNull()
-    .references(() => propertiesTable.id, { onDelete: 'cascade' }),  // Relación con la propiedad
-  url: text('url').notNull(),  // URL de la imagen
-  description: text('description'),  // Descripción opcional de la imagen
-});
+// // Tabla para las imágenes de las propiedades (chatgpt)
+// export const imagesTable = sqliteTable('images', {
+//   id: integer('id').primaryKey(),
+//   propertyId: integer('property_id')
+//     .notNull()
+//     .references(() => propertiesTable.id, { onDelete: 'cascade' }),  // Relación con la propiedad
+//   url: text('url').notNull(),  // URL de la imagen
+//   description: text('description'),  // Descripción opcional de la imagen
+// });
 
 export type InsertProperty = typeof propertiesTable.$inferInsert;
 export type SelectProperty = typeof propertiesTable.$inferSelect;
 
-export type InsertImage = typeof imagesTable.$inferInsert;
-export type SelectImage = typeof imagesTable.$inferSelect;
+// export type InsertImage = typeof imagesTable.$inferInsert;
+// export type SelectImage = typeof imagesTable.$inferSelect;
