@@ -4,7 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import ThreeBarMenu from "../threeBarMenu";
 
-export default function Inicio() {
+export default function Inicio() { 
+
   return (
     <div className="bg-white relative">
       <div className="absolute left-0 top-0">
@@ -26,8 +27,8 @@ export default function Inicio() {
           </Link>
         </div>
 
-        <div className=" over w-[60%] p-10 rounded-lg shadow-2xl flex flex-col items-center">
-          <h1 className="relative text-black text-center font-bold text-2xl mb-8">
+        <div className="w-[60%] p-10 rounded-lg shadow-2xl flex flex-col items-center">
+          <h1 className="text-black text-center font-bold text-2xl mb-8">
             PROPIEDADES MÁS VISTAS
           </h1>
 

@@ -8,8 +8,7 @@ import Mapa from '@/app/mapa/page';
 import ThreeBarMenu from '@/app/threeBarMenu';
 
 export default function Propiedad({ params }: { params: { Propiedad: string } }) {
-  const nroProp = `/${params.Propiedad}.jpg`;
-
+ 
   return (
     <div className="w-full h-screen bg-white flex flex-col justify-center items-center">
       <div className='absolute left-0 top-0'><ThreeBarMenu/></div>
@@ -28,7 +27,7 @@ export default function Propiedad({ params }: { params: { Propiedad: string } })
       <div className='text-black w-full h-full flex justify-center items-center'>
         <Image
           className='place-content-center'
-          src={nroProp} 
+          src="/casa2"
           alt={`Imagen de ${params.Propiedad}`}
           width={70}
           height={50}
