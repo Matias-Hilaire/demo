@@ -1,6 +1,5 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { drizzle } from '@/app/db'; 
-import { imagesTable } from '@/schema';
+import { imagesTable } from '@/app/db/schema.ts';
 import multer from 'multer';
 import nextConnect from 'next-connect';  
 
