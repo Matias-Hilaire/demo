@@ -26,15 +26,9 @@ export default function Inicio() {
           </Link>
         </div>
 
-<<<<<<< Updated upstream
-        <div className="w-[60%] p-10 rounded-lg shadow-2xl flex flex-col items-center">
-          <h1 className="text-black text-center font-bold text-2xl mb-8">
-            PROPIEDADES MÁS VISTAS
-=======
         <div className="w-[70%] p-10 bg-white  rounded-2xl shadow-xl backdrop-blur-md flex flex-col items-center">
           <h1 className="text-black text-center text-3xl mb-8">
             Propiedades Mas Vistas
->>>>>>> Stashed changes
           </h1>
 
           <div className="grid grid-cols-2 gap-8">
