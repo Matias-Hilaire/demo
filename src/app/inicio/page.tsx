@@ -5,7 +5,9 @@ import Image from "next/image";
 import ThreeBarMenu from "../threeBarMenu";
 
 export default function Inicio() { 
-
+//TURSO_CONNECTION_URL=libsql://ser-de-la-patagonia-matias-hilaire.turso.io
+//TURSO_AUTH_TOKEN=eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3Mjc0NzU0MDIsImlkIjoiZjI0ZTc3NjUtNTJiYi00YTFkLWFhODktNTI0NWFkOWUwNTY5In0.AFTU3ZnUfXIC4k7_HAtZSMZyf0dwcb7OoveW4Ze5sbqRrgaRCINOjqBIUQcFcOYjG0NgmEJlRkI8vNQNqmazDg
+//NEXT_PUBLIC_MAPS_API_KEY=AIzaSyCEjaQxWE68iLH7p2j5A4gGGPcRplKTk70
   return (
     <div className="bg-gradient-to-b from-white to-gray-300 relative">
       <div className="absolute left-0 top-0">
