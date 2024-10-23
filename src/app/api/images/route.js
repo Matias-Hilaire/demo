@@ -1,12 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { drizzle } from '@/lib/db';
+import { drizzle } from '@/app/db'; 
 import { imagesTable } from '@/schema';
 import multer from 'multer';
-import nextConnect from 'next-connect';
+import nextConnect from 'next-connect';  
 
 const upload = multer({
   storage: multer.diskStorage({
-    destination: './public/uploads',
+    destination: './public/uploads', 
     filename: (req, file, cb) => {
       cb(null, `${Date.now()}-${file.originalname}`);
     },
@@ -17,7 +17,7 @@ const handler = nextConnect();
 
 handler.use(upload.single('image'));
 
-handler.post(async (req: any, res: NextApiResponse) => {
+handler.post(async (req, res) => {  
   try {
     const { propertyId, description } = req.body;
     const imageUrl = `/uploads/${req.file.filename}`;

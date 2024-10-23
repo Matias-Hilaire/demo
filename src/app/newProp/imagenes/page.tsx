@@ -12,23 +12,22 @@ export default function ImageForm() {
     imageFile: null as File | null,
     previewUrl: '',
   });
-  const [loading, setLoading] = useState(false); // Estado para el botón de carga
+  const [loading, setLoading] = useState(false); 
 
-  // Maneja el evento de soltar el archivo en el área de arrastrar y soltar
   const handleFileDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
-    const file = e.dataTransfer.files[0]; // Solo se maneja el primer archivo
+    const file = e.dataTransfer.files[0]; 
 
     if (file && file.type.startsWith('image/')) {
       setFormData({
         ...formData,
         imageFile: file,
-        previewUrl: URL.createObjectURL(file), // Crear una URL de previsualización para la imagen
+        previewUrl: URL.createObjectURL(file), 
       });
     }
   };
 
-  // Maneja los cambios en los campos del formulario
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -41,12 +40,11 @@ export default function ImageForm() {
     e.preventDefault();
     setLoading(true);
 
-    // Preparar los datos del formulario, incluida la imagen
     const body = new FormData();
     body.append('propertyId', formData.propertyId);
     body.append('description', formData.description);
     if (formData.imageFile) {
-      body.append('image', formData.imageFile); // Enviar la imagen como archivo
+      body.append('image', formData.imageFile); 
     }
 
     const response = await fetch('/api/images', {
@@ -58,7 +56,6 @@ export default function ImageForm() {
 
     if (response.ok) {
       alert('Imagen cargada exitosamente');
-      // Reiniciar el formulario
       setFormData({
         propertyId: '',
         description: '',
