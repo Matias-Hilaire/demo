@@ -12,7 +12,7 @@ export default function Contact() {
           <Link href="/inicio">
             <Image
               className='place-content-center'
-              src="/SerPatagonia.jpg"
+              src="/SerPatagonia.png"
               alt="Ser de la Patagonia"
               layout="responsive"
               width={700}

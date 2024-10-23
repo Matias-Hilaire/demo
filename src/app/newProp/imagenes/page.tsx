@@ -8,13 +8,28 @@ import ThreeBarMenu from '@/app/threeBarMenu';
 export default function ImageForm() {
   const [formData, setFormData] = useState({
     propertyId: '',
-    url: '',
     description: '',
+    imageFile: null as File | null,
+    previewUrl: '',
   });
+  const [loading, setLoading] = useState(false); // Estado para el botón de carga
 
-  const [loading, setLoading] = useState(false); // Estado para mostrar el loading
+  // Maneja el evento de soltar el archivo en el área de arrastrar y soltar
+  const handleFileDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0]; // Solo se maneja el primer archivo
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    if (file && file.type.startsWith('image/')) {
+      setFormData({
+        ...formData,
+        imageFile: file,
+        previewUrl: URL.createObjectURL(file), // Crear una URL de previsualización para la imagen
+      });
+    }
+  };
+
+  // Maneja los cambios en los campos del formulario
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -26,33 +41,31 @@ export default function ImageForm() {
     e.preventDefault();
     setLoading(true);
 
-    // Convertir los valores a los tipos adecuados
-    const parsedData = {
-      ...formData,
-      propertyId: parseInt(formData.propertyId),
-    };
+    // Preparar los datos del formulario, incluida la imagen
+    const body = new FormData();
+    body.append('propertyId', formData.propertyId);
+    body.append('description', formData.description);
+    if (formData.imageFile) {
+      body.append('image', formData.imageFile); // Enviar la imagen como archivo
+    }
 
-    // Cambiar la URL del fetch para que coincida con la ruta correcta
     const response = await fetch('/api/images', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(parsedData),
+      body,
     });
 
     setLoading(false);
 
     if (response.ok) {
       alert('Imagen cargada exitosamente');
-      // Resetea el formulario
+      // Reiniciar el formulario
       setFormData({
         propertyId: '',
-        url: '',
         description: '',
+        imageFile: null,
+        previewUrl: '',
       });
     } else {
-      // Capturar el mensaje de error
       const result = await response.json();
       alert(`Hubo un error al cargar la imagen: ${result.message}`);
     }
@@ -65,36 +78,39 @@ export default function ImageForm() {
         </div>
       <div className="w-full max-w-lg p-8 bg-white rounded-lg shadow-lg">
         <h2 className="text-2xl font-semibold text-gray-800 mb-6">Cargar Nueva Imagen</h2>
-        
+
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-700">ID de la Propiedad</label>
             <input
-              type="number"
+              type="text"
               name="propertyId"
               value={formData.propertyId}
               onChange={handleInputChange}
               className="w-full px-4 py-2 border rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Ingrese el ID de la propiedad"
+              placeholder="ID de la propiedad"
               required
             />
           </div>
 
-          <div className="mb-4">
-            <label className="block text-gray-700">URL de la Imagen</label>
-            <input
-              type="text"
-              name="url"
-              value={formData.url}
-              onChange={handleInputChange}
-              className="w-full px-4 py-2 border rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Ingrese la URL de la imagen"
-              required
-            />
+          <div
+            className="w-full h-32 border-2 border-dashed border-gray-300 flex items-center justify-center rounded-md cursor-pointer mb-4"
+            onDrop={handleFileDrop}
+            onDragOver={(e) => e.preventDefault()}
+          >
+            {formData.previewUrl ? (
+              <Image
+                src={formData.previewUrl}
+                alt="Previsualización de la imagen"
+                className="object-contain"
+                width={150}
+                height={150}
+              />
+            ) : (
+              <span className="text-gray-400">Arrastra y suelta una imagen aquí</span>
+            )}
           </div>
 
           <div className="mb-4">
-            <label className="block text-gray-700">Descripción (opcional)</label>
             <textarea
               name="description"
               value={formData.description}
