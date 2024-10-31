@@ -1,7 +1,7 @@
-import { drizzle } from '@/app/db'; 
+import { db } from '@/app/db'; 
 import { imagesTable } from '@/app/db/schema.ts';
 import multer from 'multer';
-import nextConnect from 'next-connect';  
+import * as nextConnect from 'next-connect';
 
 const upload = multer({
   storage: multer.diskStorage({
