@@ -1,7 +1,7 @@
 import { db } from '@/app/db'; 
-import { imagesTable } from '@/app/db/schema.ts';
+import { imagesTable } from '@/app/db/schema';
 import multer from 'multer';
-import * as nextConnect from 'next-connect';
+import { NextResponse } from 'next/server';
 
 const upload = multer({
   storage: multer.diskStorage({
@@ -12,33 +12,36 @@ const upload = multer({
   }),
 });
 
-const handler = nextConnect();
-
-handler.use(upload.single('image'));
-
-handler.post(async (req, res) => {  
-  try {
-    const { propertyId, description } = req.body;
-    const imageUrl = `/uploads/${req.file.filename}`;
-
-    const db = drizzle();
-    await db.insert(imagesTable).values({
-      propertyId: parseInt(propertyId),
-      url: imageUrl,
-      description: description || null,
-    });
-
-    return res.status(200).json({ message: 'Imagen subida exitosamente' });
-  } catch (error) {
-    console.error('Error al subir la imagen:', error);
-    return res.status(500).json({ message: 'Error al subir la imagen' });
-  }
-});
-
 export const config = {
   api: {
     bodyParser: false,
   },
 };
 
-export default handler;
+export async function POST(req) {
+  return new Promise((resolve, reject) => {
+    upload.single('image')(req, {}, async (err) => {
+      if (err) {
+        console.error('Error al subir la imagen:', err);
+        return resolve(NextResponse.json({ message: 'Error al subir la imagen' }, { status: 500 }));
+      }
+
+      try {
+        const { propertyId, description } = req.body;
+        const imageUrl = `/uploads/${req.file.filename}`;
+
+        const dbInstance = db(); 
+        await dbInstance.insert(imagesTable).values({
+          propertyId: parseInt(propertyId),
+          url: imageUrl,
+          description: description || null,
+        });
+
+        resolve(NextResponse.json({ message: 'Imagen subida exitosamente' }, { status: 200 }));
+      } catch (error) {
+        console.error('Error al insertar en la base de datos:', error);
+        resolve(NextResponse.json({ message: 'Error al insertar en la base de datos' }, { status: 500 }));
+      }
+    });
+  });
+}
