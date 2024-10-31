@@ -13,8 +13,10 @@ interface PageProps {
   };
 }
 
-export default function Propiedad({ params }: PageProps) {
-  const nroProp = `/${params.Propiedad}.jpg`;
+export default async function Propiedad({ params }: PageProps) {
+  // Verificamos si params requiere resolución con await en caso de ser una Promise
+  const resolvedParams = await Promise.resolve(params);
+  const nroProp = `/${resolvedParams.Propiedad}.jpg`;
 
   return (
     <div className="w-full h-screen bg-white flex flex-col justify-center items-center">
@@ -35,7 +37,7 @@ export default function Propiedad({ params }: PageProps) {
         <Image
           className='place-content-center'
           src={nroProp} 
-          alt={`Imagen de ${params.Propiedad}`}
+          alt={`Imagen de ${resolvedParams.Propiedad}`}
           width={70}
           height={50}
         />
@@ -44,5 +46,5 @@ export default function Propiedad({ params }: PageProps) {
         <Mapa/>
       </div>
     </div>  
-  )
+  );
 }
