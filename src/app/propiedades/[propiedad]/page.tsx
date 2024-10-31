@@ -1,18 +1,22 @@
-"use client";
-
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Mapa from '@/app/mapa/page';
 import ThreeBarMenu from '@/app/threeBarMenu';
 
-// Ajuste de la interfaz para asegurar que params esté tipado correctamente.
 interface PropiedadPageProps {
-  params: { Propiedad: string };
+  Propiedad: string;
 }
 
-export default function Propiedad({ params }: PropiedadPageProps) {
-  const nroProp = `/${params.Propiedad}.jpg`;
+export async function getServerSideProps(context: { params: { Propiedad: string } }) {
+  const { Propiedad } = context.params;
+  return {
+    props: { Propiedad },
+  };
+}
+
+export default function Propiedad({ Propiedad }: PropiedadPageProps) {
+  const nroProp = `/${Propiedad}.jpg`;
 
   return (
     <div className="w-full h-screen bg-white flex flex-col justify-center items-center">
@@ -35,7 +39,7 @@ export default function Propiedad({ params }: PropiedadPageProps) {
         <Image
           className="place-content-center"
           src={nroProp}
-          alt={`Imagen de ${params.Propiedad}`}
+          alt={`Imagen de ${Propiedad}`}
           width={70}
           height={50}
         />
