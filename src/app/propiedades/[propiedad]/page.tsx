@@ -7,7 +7,13 @@ import { useRouter } from 'next/navigation';
 import Mapa from '@/app/mapa/page';
 import ThreeBarMenu from '@/app/threeBarMenu';
 
-export default function Propiedad({ params }: { params: { Propiedad: string } }) {
+interface PageProps {
+  params: {
+    Propiedad: string;
+  };
+}
+
+export default function Propiedad({ params }: PageProps) {
   const nroProp = `/${params.Propiedad}.jpg`;
 
   return (
