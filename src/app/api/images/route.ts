@@ -1,56 +1,69 @@
 import { db } from '@/app/db';
 import { imagesTable } from '@/app/db/schema';
-import formidable from 'formidable';
-import { NextResponse } from 'next/server';
-import fs from 'fs/promises';
+import { NextRequest, NextResponse } from 'next/server';
+import { v4 as uuidv4 } from 'uuid'; // Para nombres únicos de archivos
+import fs from 'fs';
+import path from 'path';
 
 export const config = {
   api: {
-    bodyParser: false,
+    bodyParser: false, // Desactiva el análisis automático del cuerpo para manejar FormData
   },
 };
 
-export async function POST(req) {
-  const form = formidable({
-    uploadDir: './public/uploads',
-    keepExtensions: true,
-  });
+export async function POST(req: Request) {
+  try {
+    const formData = await req.formData();
 
-  return new Promise((resolve, reject) => {
-    form.parse(req, async (err, fields, files) => {
-      if (err) {
-        console.error('Error al procesar el archivo:', err);
-        return resolve(
-          NextResponse.json({ message: 'Error al procesar el archivo' }, { status: 500 })
-        );
-      }
+    // Obtén los campos necesarios
+    const propertyId = formData.get('propertyId');
+    const description = formData.get('description') as string;
+    const imageFile = formData.get('image') as File;
 
-      try {
-        const { propertyId, description } = fields;
-        const imageFile = files.image;
+    // Validaciones de campos
+    if (!propertyId || !imageFile) {
+      return NextResponse.json(
+        { message: 'Faltan datos requeridos: propertyId o imagen.' },
+        { status: 400 }
+      );
+    }
 
-        if (!imageFile) {
-          return resolve(
-            NextResponse.json({ message: 'No se recibió ninguna imagen' }, { status: 400 })
-          );
-        }
+    // Valida el tipo de archivo
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+    if (!allowedTypes.includes(imageFile.type)) {
+      return NextResponse.json(
+        { message: 'El archivo debe ser una imagen (JPEG o PNG).' },
+        { status: 400 }
+      );
+    }
 
-        const imageUrl = `/uploads/${imageFile.newFilename}`;
+    // Generar un nombre único para la imagen
+    const fileName = `${uuidv4()}-${imageFile.name}`;
+    const uploadPath = path.join(process.cwd(), 'public/uploads', fileName);
 
-        const dbInstance = db();
-        await dbInstance.insert(imagesTable).values({
-          propertyId: parseInt(propertyId as string),
-          url: imageUrl,
-          description: description ? String(description) : null,
-        });
+    // Crear la carpeta si no existe
+    const uploadDir = path.dirname(uploadPath);
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
 
-        resolve(NextResponse.json({ message: 'Imagen subida exitosamente' }, { status: 200 }));
-      } catch (error) {
-        console.error('Error al insertar en la base de datos:', error);
-        resolve(
-          NextResponse.json({ message: 'Error al insertar en la base de datos' }, { status: 500 })
-        );
-      }
+    // Guardar la imagen en el servidor
+    const buffer = Buffer.from(await imageFile.arrayBuffer());
+    fs.writeFileSync(uploadPath, buffer);
+
+    // Guardar la información en la base de datos
+    await db.insert(imagesTable).values({
+      propertyId: parseInt(propertyId.toString(), 10),
+      description,
+      url: `/uploads/${fileName}`,
     });
-  });
+
+    return NextResponse.json({ message: 'Imagen cargada exitosamente' }, { status: 201 });
+  } catch (error) {
+    console.error('Error al procesar la imagen:', error);
+    return NextResponse.json(
+      { message: 'Error interno al procesar la imagen.' },
+      { status: 500 }
+    );
+  }
 }
