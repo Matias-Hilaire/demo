@@ -1,15 +1,16 @@
-// "use client";
+"use client";
 
-// import React from 'react';
-// import Image from 'next/image';
-// import Link from 'next/link';
-// import { useRouter } from 'next/navigation';
-// import Mapa from '@/app/mapa/page';
-// import ThreeBarMenu from '@/app/threeBarMenu';
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import Mapa from '@/app/mapa/page';
+import ThreeBarMenu from '@/app/threeBarMenu';
 
-// export default function Propiedad({ params }: { params: { Propiedad: string } }) {
-//   const nroProp = `/${params.Propiedad}.jpg`;
+export default function Propiedad({ params }: { params: { Propiedad: string } }) {
+  const nroProp = `/${params.Propiedad}.jpg`;
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 //   return (
 //     <div className="w-full h-screen bg-white flex flex-col justify-center items-center">
@@ -42,6 +43,8 @@
 //   )
 // }
 =======
+=======
+>>>>>>> Stashed changes
   return (
     <div className="w-full h-screen bg-white flex flex-col justify-center items-center">
       <div className='absolute left-0 top-0'><ThreeBarMenu/></div>
@@ -65,11 +68,19 @@
           width={70}
           height={50}
         />
+<<<<<<< Updated upstream
       </div >
+=======
+      </div>
+>>>>>>> Stashed changes
       <div className='w-[50%] h-[100%] shadow-md flex items-center m-10 rounded-md overflow-hidden'>
         <Mapa/>
       </div>
     </div>  
   )
+<<<<<<< Updated upstream
+}
+>>>>>>> Stashed changes
+=======
 }
 >>>>>>> Stashed changes

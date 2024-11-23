@@ -16,19 +16,14 @@ export default function Mapa() {
 
       const google = await loader.load();
 
-      const position = {
-        lat: -34.5487326222806,
-        lng: -58.48010656420739,
-      };
+      const position = { lat: -41.13371076836307, lng: -71.31022890074323};
 
-      // Opciones del mapa
       const mapOptions = {
         center: position,
-        zoom: 18,
+        zoom: 13,
         mapId: "MY_NEXT_MAPID",
       };
 
-      // Crear el mapa
       const mapSet = new google.maps.Map(mapRef.current as HTMLDivElement, mapOptions);
     };
 

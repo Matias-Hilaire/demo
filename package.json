@@ -14,11 +14,14 @@
     "@types/google.maps": "^3.58.1",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.35.3",
+    "formidable": "^3.5.2",
     "multer": "^1.4.5-lts.1",
     "next": "^15.0.1",
     "next-connect": "^1.0.0",
+    "prisma": "^5.22.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/next": "^9.0.0",
