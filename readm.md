@@ -126,5 +126,4 @@ Para empezar con este proyecto, sigue estos pasos:
 
 8. **Licencia:**  
    - Este proyecto está bajo la **Licencia MIT**.  
-   - Puedes encontrar más detalles en el archivo **LICENSE** incluido en el repositorio.  
-   - Se permite el uso, modificación y distribución del código, siempre que se mantenga la referencia a la licencia original.
+
