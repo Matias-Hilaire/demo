@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -55,8 +54,8 @@ export default function PropertiesPage() {
             className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300"
           >
             <Image
-              src={property.images[0]?.url || "/placeholder.png"}
-              alt={property.images[0]?.description || "Sin imagen"}
+              src={property.images?.[0]?.url || "/placeholder.png"}
+              alt={property.images?.[0]?.description || "Sin imagen"}
               width={500}
               height={300}
               className="w-full h-48 object-cover"

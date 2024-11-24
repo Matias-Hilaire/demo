@@ -3,7 +3,6 @@ import { db } from '@/app/db';
 import { propertiesTable, imagesTable } from '@/app/db/schema';
 import { eq } from 'drizzle-orm';
 
-// Obtener todas las propiedades
 export async function GET() {
   try {
     const properties = await db.select().from(propertiesTable).all();
@@ -15,7 +14,6 @@ export async function GET() {
   }
 }
 
-// Crear una nueva propiedad
 export async function POST(request: Request) {
   try {
     const { address, price, size, bedrooms, description, typeId, images } =
@@ -28,7 +26,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Insertar la propiedad en la base de datos
     const [newProperty] = await db
       .insert(propertiesTable)
       .values({
@@ -41,7 +38,6 @@ export async function POST(request: Request) {
       })
       .returning();
 
-    // Insertar las imágenes asociadas (si existen)
     if (images && Array.isArray(images)) {
       const imageEntries = images.map((img: { url: string; description: string }) => ({
         propertyId: newProperty.id,
@@ -59,7 +55,6 @@ export async function POST(request: Request) {
   }
 }
 
-// Actualizar una propiedad
 export async function PUT(request: Request) {
   try {
     const { id, address, price, size, bedrooms, description, typeId } =
@@ -82,7 +77,6 @@ export async function PUT(request: Request) {
   }
 }
 
-// Eliminar una propiedad
 export async function DELETE(request: Request) {
   try {
     const { id } = await request.json();
@@ -91,10 +85,8 @@ export async function DELETE(request: Request) {
       return NextResponse.json({ error: 'Debe proporcionar un ID.' }, { status: 400 });
     }
 
-    // Eliminar imágenes asociadas
     await db.delete(imagesTable).where(eq(imagesTable.propertyId, id));
 
-    // Eliminar la propiedad
     await db.delete(propertiesTable).where(eq(propertiesTable.id, id));
 
     return NextResponse.json({ message: 'Propiedad eliminada exitosamente.' });
