@@ -3,14 +3,16 @@ import { integer, sqliteTable, text, real } from 'drizzle-orm/sqlite-core';
 
 // Tabla para las propiedades
 export const propertiesTable = sqliteTable('properties', {
-  id: integer('id').primaryKey(),
-  address: text('address').notNull(),
-  price: real('price').notNull(),
-  size: real('size').notNull(),  
-  bedrooms: integer('bedrooms').notNull(),  
-  description: text('description').notNull(),  
-  typeId: integer('type_id').notNull(),  
-  createdAt: text('created_at')
+    id: integer('id').primaryKey(),
+    address: text('address').notNull(), 
+    price: real('price').notNull(),   
+    size: real('size').notNull(),      
+    bedrooms: integer('bedrooms').notNull(), 
+    description: text('description').notNull(), 
+    typeId: integer('type_id').notNull(),      
+    latitude: real('latitude').notNull(),     
+    longitude: real('longitude').notNull(),   
+    createdAt: text('created_at')
     .default(sql`(CURRENT_TIMESTAMP)`)
     .notNull(),
 });

@@ -1,21 +1,23 @@
 "use client";
 
-import { useState } from 'react';
-import ThreeBarMenu from '../threeBarMenu';
-import Link from 'next/link';
-import Image from 'next/image';
+import { useState } from "react";
+import ThreeBarMenu from "../threeBarMenu";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function PropertyForm() {
   const [formData, setFormData] = useState({
-    address: '',
-    price: '',
-    size: '',
-    bedrooms: '',
-    description: '',
-    typeId: '',
+    address: "",
+    price: "",
+    size: "",
+    bedrooms: "",
+    description: "",
+    typeId: "",
+    latitude: "", // Nuevo campo para latitud
+    longitude: "", // Nuevo campo para longitud
   });
 
-  const [loading, setLoading] = useState(false); // Estado para mostrar el loading
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -36,13 +38,14 @@ export default function PropertyForm() {
       size: parseFloat(formData.size),
       bedrooms: parseInt(formData.bedrooms),
       typeId: parseInt(formData.typeId),
+      latitude: parseFloat(formData.latitude), // Conversión de latitud
+      longitude: parseFloat(formData.longitude), // Conversión de longitud
     };
 
-    // Cambiar la URL del fetch para que coincida con la ruta correcta
-    const response = await fetch('/api/propiedades', {
-      method: 'POST',
+    const response = await fetch("/api/propiedades", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(parsedData),
     });
@@ -50,26 +53,27 @@ export default function PropertyForm() {
     setLoading(false);
 
     if (response.ok) {
-      alert('Propiedad cargada exitosamente');
+      alert("Propiedad cargada exitosamente");
       // Resetea el formulario
       setFormData({
-        address: '',
-        price: '',
-        size: '',
-        bedrooms: '',
-        description: '',
-        typeId: '',
+        address: "",
+        price: "",
+        size: "",
+        bedrooms: "",
+        description: "",
+        typeId: "",
+        latitude: "",
+        longitude: "",
       });
     } else {
-      // Capturar el mensaje de error
       const result = await response.json();
       alert(`Hubo un error al cargar la propiedad: ${result.message}`);
     }
   };
 
   return (
-    <div className='w-full h-screen bg-gray-50 flex flex-col justify-center items-center'>
-      <div className='absolute left-0 top-0'>
+    <div className="w-full h-screen bg-gray-50 flex flex-col justify-center items-center">
+      <div className="absolute left-0 top-0">
         <ThreeBarMenu />
       </div>
 
@@ -157,26 +161,54 @@ export default function PropertyForm() {
             </select>
           </div>
 
+          {/* Nuevo campo para latitud */}
+          <div className="mb-4">
+            <label className="block text-gray-700">Latitud</label>
+            <input
+              type="number"
+              name="latitude"
+              value={formData.latitude}
+              onChange={handleInputChange}
+              className="w-full px-4 py-2 border rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Ingrese la latitud"
+              required
+            />
+          </div>
+
+          {/* Nuevo campo para longitud */}
+          <div className="mb-4">
+            <label className="block text-gray-700">Longitud</label>
+            <input
+              type="number"
+              name="longitude"
+              value={formData.longitude}
+              onChange={handleInputChange}
+              className="w-full px-4 py-2 border rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Ingrese la longitud"
+              required
+            />
+          </div>
+
           <button
             type="submit"
             className="w-full bg-my-blue text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
             disabled={loading}
           >
-            {loading ? 'Cargando...' : 'Cargar Propiedad'}
+            {loading ? "Cargando..." : "Cargar Propiedad"}
           </button>
         </form>
-        </div>        
-      <div className='w-[35px]'>
+      </div>
+      <div className="w-[35px]">
         <Link href="\newProp\imagenes">
           <button className="hover:bg-slate-300 rounded-full">
-              <Image
-                className=""
-                src="/flecha.png"
-                alt="Casa 3"
-                layout="responsive"
-                width={1}
-                height={1}
-              />
+            <Image
+              className=""
+              src="/flecha.png"
+              alt="Casa 3"
+              layout="responsive"
+              width={1}
+              height={1}
+            />
           </button>
         </Link>
       </div>
